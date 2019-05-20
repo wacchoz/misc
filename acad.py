@@ -401,27 +401,16 @@ class Acad(object):
 if __name__ == '__main__':
 
     acad = Acad()
-    acad.makeLayer("寸法", "gray")
 
+    acad.makeLayer("寸法", "yellow")
+
+    acad.line(0,0,500,500)
+    acad.two_line_with_fillet(Point(0,0), Point(100,0), Point(100,100), 30)
+
+    acad.zoom()
+    acad.arcPt(Point(100,50), 100, 30, 120, dimension=True)
+
+    acad.setLayer("寸法")
     acad.linear_HdimensionPt(Point(0,0),Point(100,100))
 
-    acad.two_line_with_fillet(Point(0,0), Point(100,0), Point(100,100), 30)
-    acad.two_line_with_fillet(Point(0,0), Point(100,0), Point(70,-70), 30)
-    acad.two_line_with_fillet(Point(0,0), Point(0,100), Point(-100,100), 30)
-    acad.two_line_with_fillet(Point(0,0), Point(0,100), Point(100,100), 30)
-    acad.two_line_with_fillet(Point(0,0), Point(-100,0), Point(-100,-100), 30)
-    acad.two_line_with_fillet(Point(0,0), Point(-100,0), Point(-100,100), 30)
-    acad.two_line_with_fillet(Point(0,0), Point(0,-100), Point(100,-100), 30)
-    acad.two_line_with_fillet(Point(100,100), Point(100,200), Point(130,210), 30)
-    acad.two_line_with_fillet(Point(100,100), Point(100,200), Point(90,210), 30)
-    acad.two_line_with_fillet(Point(100,100), Point(10,10), Point(110,0), 30)
-    acad.two_line_with_fillet(Point(100,100), Point(100,200), Point(90,210), 30)
-
-    acad.zoomPt(Point(0,0),Point(3600,1000))
-    for angle in range(0,360,30):
-        acad.arcPt(Point(angle*10,0),100,0,angle, dimension=True)
-
-    acad.offset = Point(3600,1000)  # オフセット位置を原点とする
-    acad.direction = -1             # 逆向きに
-    for angle in range(0,360,30):
-        acad.arcPt(Point(angle*10,0),100,0,angle, dimension=True)
+ 
